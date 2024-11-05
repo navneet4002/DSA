@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f7;
+            color: #444;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .box-main {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            border: 2px solid #5c6bc0;
+        }
+        h1 {
+            color: #3f51b5;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .firsthalf2 ul {
+            list-style: none;
+            padding: 0;
+        }
+        .firsthalf2 li {
+            margin: 10px 0;
+        }
+        .firsthalf2 a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #3f51b5;
+        }
+        .firsthalf2 a:hover {
+            color: #5c6bc0;
+        }
+        h2 {
+            color: #3f51b5;
+            margin-top: 20px;
+            border-bottom: 2px solid #5c6bc0;
+            padding-bottom: 5px;
+            font-size: 26px;
+        }
+        .vasu {
+            color: #333;
+            max-width: 1000px;
+            font-size: large;
+            width: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        .vasu pre {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            max-width: 100%;
+            overflow-x: auto;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid #90caf9;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        .back-to-top:hover {
+            background-color: #3f51b5;
+        }
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .box-main {
+                padding: 20px;
+            }
+            .firsthalf2 a {
+                font-size: 16px;
+            }
+            .back-to-top {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>Array Operations</h1>
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#s-1">1. Enter an array from user and display all the values.</a></li>
+                        <li><a href="#s-2">2. Enter an array from user and print the array in reverse order.</a></li>
+                        <li><a href="#s-3">3. Enter an array from user and copy the array into a second array.</a></li>
+                        <li><a href="#s-4">4. Enter an array from user and copy it into another array in reverse order.</a></li>
+                        <li><a href="#s-5">5. Enter an array from user and print the even numbers.</a></li>
+                        <li><a href="#s-6">6. Enter an array from user and print the positive numbers.</a></li>
+                        <li><a href="#s-7">7. Enter an array from user and square all the values.</a></li>
+                        <li><a href="#s-8">8. Enter an array from user and find the maximum and minimum values.</a></li>
+                        <li><a href="#s-9">9. Enter an array from user and find the k-th smallest value.</a></li>
+                        <li><a href="#s-10">10. Enter an array from user and add all values.</a></li>
+                        <li><a href="#s-11">11. Enter an array from user and find the duplicate values.</a></li>
+                        <li><a href="#s-12">12. Enter an array from user, remove duplicate values, and fill the rest with zeroes.</a></li>
+                        <li><a href="#s-13">13. Enter an array from user and count the duplicate values.</a></li>
+                        <li><a href="#s-14">14. Enter an array from user and print all possible combinations of the elements.</a></li>
+                        <li><a href="#s-15">15. Enter an array from user and print all palindrome numbers.</a></li>
+                        <li><a href="#s-16">16. Enter two arrays from the user and check if they are the same.</a></li>
+                        <li><a href="#s-17">17. Merge two sorted arrays into one sorted array.</a></li>
+                        <li><a href="#s-18">18. Find the local minima in the array.</a></li>
+                        <li><a href="#s-19">19. Find the local maxima in the array.</a></li>
+                        <li><a href="#s-20">20. Trapping Rain Water Problem: Compute how much water can be trapped after raining.</a></li>
+                    </ul>
+                </div>
+                <!-- Questions Content -->
+                <!-- Questions Content -->
+<h2 id="s-1">Question 1: Display All Values</h2>
+<pre>Enter an array from user and display all values.</pre>
+ <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i, j;
+    int arr[5];
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the element of the array: ");
+        scanf("%d", &arr[i]);
+    }
+    printf("Elements of the array are: ");
+    for (j = 0; j &lt; 5; j++) 
+    {
+        printf("%d\t", arr[j]);
+    }
+    printf("\n"); 
+    return 0; 
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>  
+Enter the element of the array: 5
+Enter the element of the array: 4
+Enter the element of the array: 3
+Enter the element of the array: 2
+Enter the element of the array: 1
+Elements of the array are: 5     4      3       2       1
+</pre>
+
+<h2 id="s-2">Question 2: Reverse Order</h2>
+<pre>Enter an array from user and print the array in reverse order.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i, j;
+    int arr[5];
+
+    // Input elements into the array
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the element of the array: ");
+        scanf("%d", &arr[i]);
+    }
+
+    // Print elements in reverse order
+    printf("Elements of the array in reverse order: ");
+    for (j = 4; j &gt;= 0; j--) 
+    {
+        printf("%d\t", arr[j]);
+    }
+    printf("\n"); 
+    return 0; 
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the element of the array: 5
+Enter the element of the array: 4
+Enter the element of the array: 3
+Enter the element of the array: 2
+Enter the element of the array: 1
+Elements of the array in reverse order: 1       2       3       4       5  
+</pre>
+
+<h2 id="s-3">Question 3: Copy Array</h2>
+<pre>Enter an array from user and copy the array into a second array.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i;
+    int arr1[5], arr2[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter first array element: ");
+        scanf("%d", &arr1[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        arr2[i] = arr1[i];
+    }
+
+    printf("Elements of the second array are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr2[i]);
+    }
+    return 0; 
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter first array element: 1
+Enter first array element: 2
+Enter first array element: 3
+Enter first array element: 4
+Enter first array element: 5
+Elements of the second array are: 1     2       3       4       5              
+</pre>
+
+<h2 id="s-4">Question 4: Copy in Reverse Order</h2>
+<pre>Enter an array from user and copy it into another array in reverse order.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    int i;
+    int arr1[5], arr2[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter first array element: ");
+        scanf("%d", &arr1[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        arr2[i] = arr1[4 - i]; 
+    }
+
+    printf("Elements of the second array in reverse order are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr2[i]);
+    }
+    printf("\n");
+    return 0; 
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter first array element: 7
+Enter first array element: 8
+Enter first array element: 2
+Enter first array element: 33
+Enter first array element: 6
+Elements of the second array in reverse order are: 6    33      2       8       7
+</pre>
+
+<h2 id="s-5">Question 5: Print Even Numbers</h2>
+<pre>Enter an array from user and print the even numbers.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    int i, j;
+    int arr[5];
+    
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the array element: ");
+        scanf("%d", &arr[i]);  	
+    }	  
+
+    printf("The even numbers in the array: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        if (arr[i] % 2 == 0)
+        {
+            printf("%d ", arr[i]);	
+        }
+    }
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the array element: 1
+Enter the array element: 2
+Enter the array element: 4
+Enter the array element: 6
+Enter the array element: 8
+The even numbers in array: 2 4 6 8
+</pre>
+
+<h2 id="s-6">Question 6: Print Positive Numbers</h2>
+<pre>Enter an array from user and print the positive numbers.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    int arr[3];
+    
+    for (i = 0; i &lt; 3; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 3; i++)
+    {
+        if (arr[i] &gt; 0)
+        {
+            printf("\n arr[%d] = %d is pos", i, arr[i]);
+        }
+    }
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>  
+Enter the number: -5
+Enter the number: 2
+Enter the number: -8
+
+arr[1] = 2 is pos
+</pre>
+
+<h2 id="s-7">Question 7: Square All Values</h2>
+<pre>Enter an array from user and square all the values.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int i;
+    int arr[5];
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        arr[i] = arr[i] * arr[i];
+    }
+
+    printf("Square values are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Enter the number: 5
+Square values are: 1    4       9       16      25          
+</pre>
+
+<h2 id="s-8">Question 8: Largest Value</h2>
+<pre>Enter an array from user and find the largest value.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, largest;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    largest = arr[0];
+    for (i = 1; i &lt; 5; i++)
+    {
+        if (arr[i] &gt; largest)
+        {
+            largest = arr[i];
+        }
+    }
+
+    printf("Largest value in the array: %d\n", largest);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 12
+Enter the number: 24
+Enter the number: 36
+Enter the number: 50
+Enter the number: 18
+Largest value in the array: 50
+</pre>
+
+<h2 id="s-9">Question 9: Smallest Value</h2>
+<pre>Enter an array from user and find the smallest value.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, smallest;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    smallest = arr[0];
+    for (i = 1; i &lt; 5; i++)
+    {
+        if (arr[i] &lt; smallest)
+        {
+            smallest = arr[i];
+        }
+    }
+
+    printf("Smallest value in the array: %d\n", smallest);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 2
+Enter the number: 5
+Enter the number: 1
+Enter the number: 4
+Enter the number: 3
+Smallest value in the array: 1
+</pre>
+
+<h2 id="s-10">Question 10: Count Values</h2>
+<pre>Enter an array from user and count the values of even and odd numbers.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, even_count = 0, odd_count = 0;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        if (arr[i] % 2 == 0)
+        {
+            even_count++;
+        }
+        else
+        {
+            odd_count++;
+        }
+    }
+
+    printf("Even count: %d\n", even_count);
+    printf("Odd count: %d\n", odd_count);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 2
+Enter the number: 5
+Enter the number: 3
+Enter the number: 4
+Enter the number: 8
+Even count: 3
+Odd count: 2
+</pre>
+
+<h2 id="s-11">Question 11: Sum of Array</h2>
+<pre>Enter an array from user and find the sum of all elements.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, sum = 0;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+
+    printf("Sum of the array elements: %d\n", sum);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Enter the number: 5
+Sum of the array elements: 15
+</pre>
+
+<h2 id="s-12">Question 12: Average of Array</h2>
+<pre>Enter an array from user and find the average of all elements.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, sum = 0;
+    float average;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+
+    average = sum / 5.0;
+    printf("Average of the array elements: %.2f\n", average);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Enter the number: 5
+Average of the array elements: 3.00
+</pre>
+
+<h2 id="s-13">Question 13: Find a Specific Value</h2>
+<pre>Enter an array from user and check if a specific value exists.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, value, found = 0;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the value to find: ");
+    scanf("%d", &value);
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        if (arr[i] == value)
+        {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found)
+        printf("Value %d found in the array.\n", value);
+    else
+        printf("Value %d not found in the array.\n", value);
+
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Enter the number: 5
+Enter the value to find: 3
+Value 3 found in the array.
+</pre>
+
+<h2 id="s-14">Question 14: Count Occurrences</h2>
+<pre>Enter an array from user and count the occurrences of a specific value.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, value, count = 0;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the value to count: ");
+    scanf("%d", &value);
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        if (arr[i] == value)
+        {
+            count++;
+        }
+    }
+
+    printf("Value %d occurs %d times in the array.\n", value, count);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 2
+Enter the number: 2
+Enter the number: 4
+Enter the number: 2
+Enter the value to count: 2
+Value 2 occurs 3 times in the array.
+</pre>
+
+<h2 id="s-15">Question 15: Shift Elements</h2>
+<pre>Enter an array from user and shift all elements to the right.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i;
+
+    // Input elements into the array
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the element of the array: ");
+        scanf("%d", &arr[i]);
+    }
+
+    // Shift elements to the right
+    int temp = arr[4];
+    for (i = 4; i &gt; 0; i--)
+    {
+        arr[i] = arr[i - 1];
+    }
+    arr[0] = temp;
+
+    printf("Array after shifting elements to the right: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the element of the array: 1
+Enter the element of the array: 2
+Enter the element of the array: 3
+Enter the element of the array: 4
+Enter the element of the array: 5
+Array after shifting elements to the right: 5	1	2	3	4	
+</pre>
+
+<h2 id="s-16">Question 16: Sort Array</h2>
+<pre>Enter an array from user and sort it in ascending order.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5], i, j, temp;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the element of the array: ");
+        scanf("%d", &arr[i]);
+    }
+
+    // Sorting the array
+    for (i = 0; i &lt; 5; i++)
+    {
+        for (j = i + 1; j &lt; 5; j++)
+        {
+            if (arr[i] &gt; arr[j])
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array in ascending order: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the element of the array: 4
+Enter the element of the array: 2
+Enter the element of the array: 5
+Enter the element of the array: 1
+Enter the element of the array: 3
+Sorted array in ascending order: 1	2	3	4	5	
+</pre>
+
+<h2 id="s-17">Question 17: Merge Two Arrays</h2>
+<pre>Enter two arrays from user and merge them into a single array.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr1[5], arr2[5], merged[10];
+    int i;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter element for first array: ");
+        scanf("%d", &arr1[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter element for second array: ");
+        scanf("%d", &arr2[i]);
+    }
+
+    // Merging the two arrays
+    for (i = 0; i &lt; 5; i++)
+    {
+        merged[i] = arr1[i];
+        merged[i + 5] = arr2[i];
+    }
+
+    printf("Merged array: ");
+    for (i = 0; i &lt; 10; i++)
+    {
+        printf("%d\t", merged[i]);
+    }
+    printf("\n");
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter element for first array: 1
+Enter element for first array: 2
+Enter element for first array: 3
+Enter element for first array: 4
+Enter element for first array: 5
+Enter element for second array: 6
+Enter element for second array: 7
+Enter element for second array: 8
+Enter element for second array: 9
+Enter element for second array: 10
+Merged array: 1	2	3	4	5	6	7	8	9	10	
+</pre>
+
+<h2 id="s-18">Question 18: Unique Elements</h2>
+<pre>Enter an array from user and print unique elements.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5], i, j, isUnique;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Unique elements are: ");
+    for (i = 0; i &lt; 5; i++)
+    {
+        isUnique = 1;
+        for (j = 0; j &lt; i; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                isUnique = 0;
+                break;
+            }
+        }
+        if (isUnique)
+        {
+            printf("%d\t", arr[i]);
+        }
+    }
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Unique elements are: 1	2	3	4	
+</pre>
+
+<h2 id="s-19">Question 19: Count Unique Elements</h2>
+<pre>Enter an array from user and count unique elements.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5], i, j, count = 0, isUnique;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        isUnique = 1;
+        for (j = 0; j &lt; i; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                isUnique = 0;
+                break;
+            }
+        }
+        if (isUnique)
+        {
+            count++;
+        }
+    }
+    printf("Count of unique elements: %d\n", count);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 1
+Enter the number: 2
+Enter the number: 3
+Enter the number: 4
+Count of unique elements: 4
+</pre>
+
+<h2 id="s-20">Question 20: Find Second Largest</h2>
+<pre>Enter an array from user and find the second largest value.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int arr[5];
+    int i, largest, second_largest;
+
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Enter the number: ");
+        scanf("%d", &arr[i]);
+    }
+
+    largest = second_largest = arr[0];
+    for (i = 1; i &lt; 5; i++)
+    {
+        if (arr[i] &gt; largest)
+        {
+            second_largest = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] &gt; second_largest && arr[i] != largest)
+        {
+            second_largest = arr[i];
+        }
+    }
+
+    printf("Second largest value in the array: %d\n", second_largest);
+    return 0;
+}
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the number: 1
+Enter the number: 5
+Enter the number: 2
+Enter the number: 4
+Enter the number: 3
+Second largest value in the array: 4
+</pre>
+
+            </div>
+        </section>
+    </div>
+    <!-- Back to Top Button -->
+    <button class="back-to-top">Back to Top</button>
+    <script>
+        // Show the back-to-top button when user scrolls down
+        window.onscroll = function () {
+            var backToTopBtn = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        };
+
+        // Scroll back to top when button is clicked
+        document.querySelector('.back-to-top').onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>

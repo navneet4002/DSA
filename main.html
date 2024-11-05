@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures Topics</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1b1b1b;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        /* Styling the sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: #333;
+            padding-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar a {
+            color: #e0e0e0;
+            padding: 14px 20px;
+            width: 100%;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+            transform: scale(1.05);
+        }
+
+        /* Styling the main content area */
+        .main-content {
+            margin-left: 220px; /* Align main content next to the sidebar */
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Styling the sections */
+        section {
+            min-height: 100vh;
+            padding: 50px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        section:nth-child(odd) {
+            background-color: #252525;
+        }
+
+        section:nth-child(even) {
+            background-color: #1f1f1f;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #ffffff;
+        }
+
+        /* Scroll smoothly to sections */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #444;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            display: none;
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+
+        #back-to-top:hover {
+            background-color: #666;
+        }
+
+        /* Dynamic content area */
+        #content,
+        #linked_list-content,
+        #queues-content,
+        #singledim-content,
+        #recursion-content,
+        #graph-content,
+        #searching-content,
+        #sorting-content,
+        #stack-content,
+        #strings-content,
+        #trees-content {
+            padding: 20px;
+            background-color: #333;
+            color: #e0e0e0;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <a href="/webpages/index.html">HOME</a>
+        <a href="#2d-arrays" onclick="loadPage('2d.html', '2d-arrays')">2D Arrays</a>
+        <a href="#graphs" onclick="loadPage('graph.html', 'graphs')">Graphs</a>
+        <a href="#linked-list" onclick="loadPage('linked_list.html', 'linked-list')">Linked List</a>
+        <a href="#queues" onclick="loadPage('queues.html', 'queues')">Queues</a>
+        <a href="#recursion" onclick="loadPage('recursion.html', 'recursion')">Recursion</a>
+        <a href="#searching-algorithms" onclick="loadPage('searching.html', 'searching-algorithms')">Searching Algorithms</a>
+        <a href="#single-dim-arrays" onclick="loadPage('1d.html','single-dim-arrays')">Single Dim Arrays</a>
+        <a href="#sorting-algorithms" onclick="loadPage('sortingalgo.html', 'sorting-algorithms')">Sorting Algorithms</a>
+        <a href="#stacks" onclick="loadPage('stack.html', 'stacks')">Stacks</a>
+        <a href="#strings" onclick="loadPage('strings.html', 'strings')">Strings</a>
+        <a href="#trees" onclick="loadPage('trees.html', 'trees')">Trees</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <section id="2d-arrays">
+            <div id="content">2D ARRAY</div>
+        </section>
+
+        <section id="graphs">
+            <div id="graph-content">Graphs</div>
+        </section>
+
+        <section id="linked-list">
+            <div id="linked_list-content">Linked List</div>
+        </section>
+
+        <section id="queues">
+            <div id="queues-content">Queue</div>
+        </section>
+
+        <section id="recursion">
+            <div id="recursion-content">Recursion</div>
+        </section>
+
+        <section id="searching-algorithms">
+            <div id="searching-content">Searching</div>
+        </section>
+
+        <section id="single-dim-arrays">
+            <div id="singledim-content">1D Array</div>
+        </section>
+
+        <section id="sorting-algorithms">
+            <div id="sorting-content">Sorting</div>
+        </section>
+
+        <section id="stacks">
+            <div id="stack-content">Stacks</div>
+        </section>
+
+        <section id="strings">
+            <div id="strings-content">Strings</div>
+        </section>
+
+        <section id="trees">
+            <div id="trees-content">Trees</div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Show "Back to Top" button when the user scrolls down
+        window.onscroll = function () {
+            var topButton = document.getElementById('back-to-top');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                topButton.style.display = 'block';
+            } else {
+                topButton.style.display = 'none';
+            }
+        };
+
+        // Smooth scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Function to load external content dynamically
+        function loadPage(page, sectionId) {
+            const contentDiv = sectionId === 'graphs' ? document.getElementById('graph-content') :
+                sectionId === 'linked-list' ? document.getElementById('linked_list-content') :
+                sectionId === 'queues' ? document.getElementById('queues-content') :
+                sectionId === 'single-dim-arrays' ? document.getElementById('singledim-content') :
+                sectionId === 'recursion' ? document.getElementById('recursion-content') :
+                sectionId === 'searching-algorithms' ? document.getElementById('searching-content') :
+                sectionId === 'sorting-algorithms' ? document.getElementById('sorting-content') :
+                sectionId === 'stacks' ? document.getElementById('stack-content') :
+                sectionId === 'strings' ? document.getElementById('strings-content') :
+                sectionId === 'trees' ? document.getElementById('trees-content') :
+                document.getElementById('content');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', page, true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    contentDiv.innerHTML = this.responseText;
+                } else {
+                    contentDiv.innerHTML = 'Content could not be loaded.';
+                }
+            };
+            xhr.onerror = function () {
+                contentDiv.innerHTML = 'There was an error loading the content.';
+            };
+            xhr.send();
+        }
+    </script>
+
+</body>
+
+</html>

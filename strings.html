@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+    <style>
+        /* General reset */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1e;
+    color: #d1d1d6;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.box-main {
+    max-width: 800px;
+    width: 100%;
+    background-color: #2c2c2e;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 2px solid #3f3f42;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.firsthalf2 ul {
+    list-style: none;
+    padding:0;
+}
+
+.firsthalf2 li {
+    margin:10px 0;
+}
+
+.firsthalf2 a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.firsthalf2 a:hover {
+    color: #6a6aff;
+}
+
+h2 {
+    color: white;
+    margin-top: 20px;
+    border-bottom: 2px solid #3f3f42;
+    padding-bottom: 5px;
+    font-size: 26px;
+}
+
+.vasu {
+    color: #d1d1d6;
+    max-width: 1000px;
+    font-size: large;
+    width: auto;
+    background-color: #2c2c2e;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.vasu pre {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+    overflow-x: auto;
+    background-color: #3a3a3c;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    border: 1px solid #5a5a5f;
+    color: #f4f4f5;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background-color: #6a6aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #4f4fcc;
+}
+
+@media (max-width: 600px) {
+    .box-main {
+        padding: 20px;
+    }
+
+    .firsthalf2 a {
+        font-size: 16px;
+    }
+
+    .back-to-top {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>STRING OPERATIONS</h1>
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#st1">1. Enter a string from the user and convert to uppercase.</a></li>
+                        <li><a href="#st2">2. Enter a string from the user and convert to lowercase.</a></li>
+                        <li><a href="#st3">3. Enter a string from the user and convert to sentence case.</a></li>
+                        <li><a href="#st4">4. Enter a string from the user and convert to title case.</a></li>
+                        <li><a href="#st5">5. Enter a string from the user and convert to toggle case.</a></li>
+                        <li><a href="#st6">6. Enter a string from the user and find the final length of the string.</a></li>
+                        <li><a href="#st7">7. Enter two strings from the user and compare if they are equal.</a></li>
+                        <li><a href="#st8">8. Enter two strings from the user and concatenate them into another string and display the answer.</a></li>
+                        <li><a href="#st9">9. Enter a string from the user and copy it into another string variable.</a></li>
+                        <li><a href="#st10">10. Enter a string from the user, enter the index number, and print the character present at that index.</a></li>
+                        <li><a href="#st11">11. Enter a string from the user and check if it is a palindrome.</a></li>
+                        <li><a href="#st12">12. Enter a string from the user and print each character on a new line.</a></li>
+                        <li><a href="#st13">13. Enter a string from the user and copy the reverse of the string into another string.</a></li>
+                        <li><a href="#st14">14. Enter a string from the user and print the difference of ASCII values of each character.</a></li>
+                        <li><a href="#st15">15. Enter a string from the user, enter a character, and search for the character in the string.</a></li>
+                        <li><a href="#st16">16. Enter a string from the user, enter a character, and print the index of the character if it exists in the string, else print -1.</a></li>
+                        <li><a href="#st17">17. Enter a string from the user and count the number of vowels.</a></li>
+                        <li><a href="#st18">18. Enter a string from the user and convert it to an integer value.</a></li>
+                        <li><a href="#st19">19. Enter a string from the user and convert it to a float value.</a></li>
+                        <li><a href="#st20">20. Enter a string from the user and count the number of characters, words, spaces, and lines.</a></li>
+                        <li><a href="#st21">21. Print all the permutations of a string.</a></li>
+                        <li><a href="#st22">22. Enter a string from the user, sort the string in ascending order, and print it.</a></li>
+                        <li><a href="#st23">23. Enter a sentence from the user and then enter a word and count the occurrence of that word in the sentence.</a></li>
+                        <li><a href="#st24">24. Enter a sentence from the user and then enter a word and replace that word with another word.</a></li>
+                        <li><a href="#st25">25. Enter a string from the user and trim the spaces from both ends (if any).</a></li>
+                        <li><a href="#st26">26. Enter a string from the user and split the first and second words and return the start index of the second word.</a></li>
+                        <li><a href="#st27">27. Display the string on the output screen but ask the text alignment option given by the user (1 for left, 2 for center, 3 for right).</a></li>
+                        <li><a href="#st28">28. Create a dictionary with 10 words and their meanings with the following operations: create, delete, search.</a></li>
+                        <li><a href="#st29">29. Enter a string from the user and convert the characters into their ASCII values in an integer array (for example, take 10 characters).</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Question 1 -->
+                <h2 id="st1">Question 1: Convert to Uppercase</h2>
+                <pre>Enter a string from the user and convert to uppercase.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+int i;
+char str[20];
+
+printf("Enter the string: ");
+scanf("%s", str);  
+
+for (i = 0; str[i] != '\0'; i++) 
+{
+    if (str[i] &gt;= 'A' &amp;&amp; str[i] &lt;= 'Z') 
+    {
+        str[i] = str[i] + 32;  
+    }
+     else if (str[i] &gt;= 'a' &amp;&amp; str[i] &lt;= 'z')
+    {
+        str[i] = str[i] - 32; 
+    }
+}
+
+printf("The string is %s\n", str);
+}
+               
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h3>
+Enter the string :john
+The string is JOHN  
+</pre>
+                </pre>
+
+                <!-- Question 2 -->
+                <h2 id="st2">Question 2: Convert to Lowercase</h2>
+                <pre>Enter a string from the user and convert to lowercase.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main() 
+{
+    int i;
+    char str[20];
+
+    printf("Enter the string: ");
+    scanf("%s", str);   
+
+    for (i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] &gt;= 'A' &amp;&amp; str[i] &lt;= 'Z') 
+        {
+            str[i] = str[i] + 32; 
+        }
+    }
+
+    printf("The string in lower case: %s\n", str);
+}
+        
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h3>
+Enter the string: JoHn
+The string in lower case: john
+</pre>
+                </pre>
+
+                <!-- Question 3 -->
+                <h2 id="st3">Question 3: Convert to Sentence Case</h2>
+                <pre>Enter a string from the user and convert to sentence case.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+char str[100];
+printf("Enter a string: ");
+gets(str);
+printf("String before sentence case: %s \n", str);
+
+if (str[0] &gt;= 'a' && str[0] &lt;= 'z') 
+{
+    str[0] = str[0] - 32;
+}
+
+for (int i = 0; str[i] != '\0'; i++) 
+{
+    if (str[i] == '.')
+    {
+        str[i + 2] = str[i + 2] - 32;
+    }
+}
+
+printf("String after sentence case: %s \n", str);
+return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h3>
+Enter a string: input sentence
+String before sentence case: input sentence
+String after sentence case: Input sentence  
+</pre>
+
+
+                <!-- Question 4 -->
+                <h2 id="st4">Question 4: Convert to Title Case</h2>
+                <pre>Enter a string from the user and convert to title case.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main()
+{
+char str[20];
+printf("Enter a string: ");
+gets(str);
+
+str[0] = str[0] - 32;
+
+for (int i = 0; i &lt; 20; i++) 
+{   
+    if (str[i] == ' ')
+    {
+        str[i + 1] = str[i + 1] - 32; 
+    }
+}    
+
+printf("String after title case: %s ", str);
+
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h3>
+Enter a string: dsa string
+String after title case: Dsa String
+  
+</pre>
+
+
+                <!-- Question 5 -->
+                <h2 id="st5">Question 5: Convert to Toggle Case</h2>
+                <pre>Enter a string from the user and convert to toggle case.</pre>
+<pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+char str[20];
+printf("Enter the string: ");
+gets(str);
+
+for (int i = 0; str[i] != '\0'; i++) 
+{
+    if (str[i] &gt;= 'A' && str[i] &lt;= 'Z')
+    {
+        str[i] = str[i] + 32; 
+    }
+    else if (str[i] &gt;= 'a' && str[i] &lt;= 'z')
+    {
+        str[i] = str[i] - 32;
+    }
+}
+
+    printf("String after toggle: ");
+    printf("%s\n", str);
+}
+                 
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the string : GfVhbbhvv FFDcv
+String after toggle: gFvHBBHVV ffdCV
+
+</pre>
+
+                <!-- Question 6 -->
+                <h2 id="st6">Question 6: Calculate length of String</h2>
+                <pre>Enter a string from the user and find the final length of the string.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+int i;
+int n;
+n = 0;
+char str[100];
+printf("Enter the string: ");
+scanf("%s", str);
+
+for (i = 0; str[i] != '\0'; i++)
+{
+    n++;
+}
+printf("The length of the string '%s' is %d\n", str, n);
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the string :LKIIOIJI
+the length of the LKIIOIJI is 8  
+                </pre>
+
+                <!-- Question 7 -->
+                <h2 id="st7">Question 7: Compare two strings if they are equal</h2>
+                <pre>Enter two strings from the user and compare if they are equal.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    char str1[10];
+    char str2[10];
+    
+    printf("Enter the first string: ");
+    scanf("%s", str1);
+    
+    printf("Enter the second string: ");
+    scanf("%s", str2);
+    
+    for (int i = 0; i &lt; 10; i++)
+    {
+        if (str1[i] != str2[i])
+        {
+            printf("The strings are not equal at %d\n", i);
+            return;
+        }
+        else if (str1[i] == '\0' || str2[i] == '\0')
+        {
+            break;
+        }
+    }
+    printf("The strings are equal.\n");
+}
+                 
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the first string :vasu
+Enter the second string :vasdu
+The strings are not equal at 3
+                </pre>
+                <!-- Question 8 -->
+                <h2 id="st8">Question 8: Concatenate two strings into another string</h2>
+                <pre>Enter two strings from the user and concatenate them into another string and display the answer.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    char str1[10];
+    char str2[10];
+    char str3[20];
+
+    printf("Enter the first string: ");
+    scanf("%s", str1);
+    
+    printf("Enter the second string: ");
+    scanf("%s", str2);
+    
+    int i, j;
+    for (i = 0; str1[i] != '\0'; i++)
+    {
+        str3[i] = str1[i];
+    }
+
+    for (j = 0; str2[j] != '\0'; j++)
+    {
+        str3[i + j] = str2[j];
+    }
+    
+    str3[i + j] = '\0';
+    
+    printf("The combined string is: %s\n", str3);
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the first string: john
+Enter the second string: jl
+The combined string is: johnjl
+                </pre>
+
+                <!-- Question 9 -->
+                <h2 id="st9">Question 9: Copy String into another string</h2>
+                <pre>Enter a string from the user and copy it into another string variable.</pre>
+                <pre>
+include &lt;stdio.h&gt;
+
+void main()
+{
+    char str1[10];
+    char str3[10];
+
+    printf("Enter the first string: ");
+    scanf("%s", str1);
+
+    for (int i = 0; str1[i] != '\0'; i++)
+    {
+        str3[i] = str1[i];
+    }
+    
+    str3[i] = '\0';
+
+    printf("The second string is: %s\n", str3);
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the first string: sda
+The second string is: sda
+                </pre>
+
+                <!-- Question 10 -->
+                <h2 id="st10">Question 10: Print character at given index</h2>
+                <pre>Enter a string from the user, enter the index number, and print the character present at that index.</pre>
+                <pre>
+                    #include &lt;stdio.h&gt;
+
+void main()
+{
+    int i;
+    int n;
+    char str[100];
+    printf("Enter the string: ");
+    scanf("%s", str);
+    fflush(stdin);
+    printf("Enter the index: ");
+    scanf("%d", &n);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (i == n)
+        {
+            printf("The index is %d and character is %c\n", i, str[i]);
+            return;
+        }
+    }
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the string :VN'
+Enter the index :2
+The index is 2 and character is '  
+                </pre>
+
+                <!-- Question 11 -->
+                <h2 id="st11">Question 11: Check if string is palindrome</h2>
+                <pre>Enter a string from the user and check if it is a palindrome.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    char str[100];
+    int i, len = 0, check = 1;
+
+    printf("Enter the string: ");
+    scanf("%s", str);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        len++;
+    }
+
+    for (i = 0; i &lt; len / 2; i++)
+    {
+        if (str[i] != str[len - i - 1])
+        {
+            check = 0;
+            break;
+        }
+    }
+
+    if (check)
+    {
+        printf("The string '%s' is a palindrome.\n", str);
+    }
+    else
+    {
+        printf("The string '%s' is not a palindrome.\n", str);
+    }
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the string: sscsc
+The string 'sscsc' is not a palindrome.
+                </pre>
+
+                <!-- Question 12 -->
+                <h2 id="st12">Question 12: Print the each string character in new line</h2>
+                <pre>Enter a string from the user and print each character on a new line.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+void main()
+{
+    char str[10];
+    int i;
+
+    printf("Enter the string: ");
+    scanf("%s", str);
+
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        printf("%c\n", str[i]);
+    }
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter the string: abcd
+a
+b
+c
+d
+
+                </pre>
+
+                <!-- Question 13 -->
+                <h2 id="st13">Question 13: Copy the reverse string into another string</h2>
+                <pre>Enter a string from the user and copy the reverse of the string into another string.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[10], rvr[10];
+    int i, len = 0;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    while (str[len] != '\0')
+    {
+        len++;
+    }
+
+    for (i = 0; i &lt; len; i++) 
+    {
+        rvr[i] = str[len - 1 - i];
+    }
+
+    printf("Reversed of the string into another is: %s", rvr);
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: ouput
+Reversed of the string into another is: tupuo
+                </pre>
+
+                <!-- Question 14 -->
+                <h2 id="st14">Question 14: Print difference of ASCII value of characters</h2>
+                <pre>Enter a string from the user and print the difference of ASCII values of each character.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[10];
+    int i, diff;
+
+    printf("Enter a string: ");
+    gets(str); 
+
+    printf("Differences of ASCII values:\n");
+    for (i = 0; str[i + 1] != '\0'; i++) 
+    {
+         diff = str[i + 1] - str[i];
+        printf("Difference between '%c' and '%c': %d\n", str[i], str[i + 1], diff);
+    }
+
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: vas
+Differences of ASCII values:
+Difference between 'v' and 'a': -21
+Difference between 'a' and 's': 18
+Difference between 's' and 'u': 2  
+                </pre>
+
+                <!-- Question 15 -->
+                <h2 id="st15">Question 15: Search character in String</h2>
+                <pre>Enter a string from the user, enter a character, and search for the character in the string.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[10], ch;
+    int found = 0, i;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    printf("Enter a character to search: ");
+    scanf(" %c", &ch); 
+
+    for (i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] == ch) 
+        {
+            printf("Character '%c' found \n", ch);
+            return 0; 
+        }
+    }
+
+    printf("Character '%c' not found in the string.\n", ch);
+
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2> 
+Enter a string: abcd
+Enter a character to search: a
+Character 'a' found.
+                </pre>
+
+                <!-- Question 16 -->
+                <h2 id="st16">Question 16: Find character of given string and print index</h2>
+                <pre>Enter a string from the user, enter a character, and print the index of the character if it exists in the string, else <br>print -1.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[100], ch;
+    int i;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    printf("Enter a character to search: ");
+    scanf(" %c", &ch); 
+
+    for (i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] == ch) 
+        {
+            printf("Character '%c' found at index %d.\n", ch, i);
+            return 0;
+        }
+    }
+
+    printf("Character '%c' not found in the string.\n", ch);
+    printf("-1\n");
+
+    return 0;
+}
+    
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: abcd
+Enter a character to search: a
+Character 'a' found at index 0.  
+                </pre>
+
+                <!-- Question 17 -->
+                <h2 id="st17">Question 17: Count the number of vowels</h2>
+                <pre>Enter a string from the user and count the number of vowels.</pre>
+                <pre>
+#include lt;stdio.hgt;
+
+int main(); 
+{
+char str[10];
+int i, count = 0;
+
+printf("Enter a string: ");
+gets(str);
+
+for (i = 0; str[i] != '\0'; i++) 
+{
+    char ch = str[i];
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+        ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') 
+    {
+        count++;
+    }
+}
+
+printf("Number of vowels: %d\n", count);
+
+return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: abcd
+Number of vowels: 1 
+                </pre>
+
+                <!-- Question 18 -->
+                <h2 id="st18">Question 18: Convert string into an integer value</h2>
+                <pre>Enter a string from the user and convert it to an integer value.</pre>
+                <pre>
+                    #include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[10];
+    int sum = 0;
+
+    printf("Enter your string: ");
+    gets(str);
+
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] &lt; '1' || str[i] &gt; '9') 
+        {
+            printf("Not able to convert your char at index %d: '%c'\n", i, str[i]);
+        }
+        else
+         {
+            sum = sum * 10 + (str[i] - '0'); 
+        }
+    }
+
+    printf("Your converted integer is: %d\n", sum);
+    return 0;
+}
+    
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter your string: v34
+Not able to convert your char at index 0: 'v'
+Your converted integer is: 34  
+                </pre>
+
+                <!-- Question 19 -->
+                <h2 id="st19">Question 19: Convert string into an float value</h2>
+                <pre>Enter a string from the user and convert it to a float value.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+char str[10];
+float result = 0.0, decimalPlace = 1.0;
+int i = 0, isNegative = 0;
+
+printf("Enter a string to convert into a float: ");
+gets(str);
+
+if (str[0] == '-') {
+    isNegative = 1;
+    i++;
+}
+
+while (str[i] &gt;= '0' && str[i] &lt;= '9') 
+{
+    result = result * 10 + (str[i] - '0');
+    i++;
+}
+
+if (str[i] == '.') 
+{
+    i++;
+    while (str[i] &gt;= '0' && str[i] &lt;= '9') 
+    {
+        decimalPlace *= 0.1;
+        result += (str[i] - '0') * decimalPlace;
+        i++;
+    }
+}
+
+if (isNegative)
+{
+    result = -result;
+}
+
+printf("The float value is: %.2f\n", result);
+
+return 0;
+}
+
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string to convert into a float: 17
+The float value is: 17.00  
+                </pre>
+
+                <!-- Question 20 -->
+                <h2 id="st20">Question 20: Count no of Characters,words,spaces,lines</h2>
+                <pre>Enter a string from the user and count the number of characters, words, spaces, and lines.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[10];
+    int i, characters = 0, words = 0, spaces = 0, lines = 0;
+
+    printf("Enter a string (end with a newline):\n");
+
+    while (1) 
+    {
+        gets(str);
+        if (str[0] == '\0') 
+            break;
+
+        lines++;
+        
+        for (i = 0; str[i] != '\0'; i++) 
+        {
+            characters++;
+            if (str[i] == ' ') 
+            {
+                spaces++;
+            }
+            if (str[i] == ' ' || str[i] == '\n' || str[i + 1] == '\0') 
+            {
+                if (str[i] != ' ' && str[i] != '\n') 
+                {
+                    words++;
+                }
+            }
+        }
+    }
+
+    printf("Number of characters: %d\n", characters);
+    printf("Number of words: %d\n", words);
+    printf("Number of spaces: %d\n", spaces);
+    printf("Number of lines: %d\n", lines);
+
+    return 0;
+}
+
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string (end with a newline): vasu lho
+
+Number of characters: 9
+Number of words: 0
+Number of spaces: 1
+Number of lines: 1  
+                </pre>
+
+                <!-- Question 21 -->
+                <h2 id="st21">Question 21: Print all the permutations of a string</h2>
+                <pre>Print all the permutations of a string.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[] = "ABC";
+    char temp;
+    int n = 0;
+
+    while (str[n] != '\0') 
+    {
+        n++;
+    }
+
+    for (int i = 0; i &lt; n; i++) 
+    {
+        for (int j = i; j &lt; n; j++) 
+        {
+            temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+
+            for (int k = 0; k &lt; n; k++) 
+            {
+                printf("%c", str[k]);
+            }
+            printf("\n");
+
+            temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+        }
+    }
+
+    return 0;
+}
+
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+ABC
+BAC
+CBA
+ABC
+ACB
+ABC  
+                </pre>
+
+                <!-- Question 22 -->
+                <h2 id="st22">Question 22: Sort the string in ascending order</h2>
+                <pre>Enter a string from the user, sort the string in ascending order, and print it.</pre>
+                <pre>
+                    #include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[100];
+    int i, j, temp, length = 0;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    while (str[length] != '\0') 
+    {
+        length++;
+    }
+
+    for (i = 0; i &lt; length - 1; i++) 
+    {
+        for (j = i + 1; j &lt; length; j++) 
+        {
+            if (str[i] &gt; str[j]) 
+            {
+                temp = str[i];
+                str[i] = str[j];
+                str[j] = temp;
+            }
+        }
+    }
+
+    printf("Ascending order string: ");
+    for (i = 0; i &lt; length; i++) 
+    {
+        printf("%c", str[i]);
+    }
+
+    return 0;
+}
+                         
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: dsbc
+Ascending  order string: bcds 
+                </pre>
+
+                <!-- Question 23 -->
+                <h2 id="st23">Question 23: Count the occurence of word in sentence</h2>
+                <pre>Enter a sentence from the user and then enter a word and count the occurrence of that word in the sentence.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char sentence[500], word[50];
+    int count = 0, i = 0, j = 0, wordLen = 0, sentenceLen = 0;
+    int found;
+
+    printf("Enter a sentence: ");
+    gets(sentence);
+    printf("Enter a word to count: ");
+    gets(word);
+
+    while (sentence[sentenceLen] != '\0') 
+    {
+        sentenceLen++;
+    }
+
+    while (word[wordLen] != '\0') 
+    {
+        wordLen++;
+    }
+
+    for (i = 0; i &lt;= sentenceLen - wordLen; i++) 
+    {
+        found = 1;
+        for (j = 0; j &lt; wordLen; j++) 
+        {
+            if (sentence[i + j] != word[j]) 
+            {
+                found = 0;
+                break;
+            }
+        }
+        if (found == 1 && (i == 0 || sentence[i - 1] == ' ') && 
+            (sentence[i + wordLen] == ' ' || sentence[i + wordLen] == '\0')) 
+        {
+            count++;
+        }
+    }
+
+    printf("The word '%s' occurs %d times in the sentence.\n", word, count);
+
+    return 0;
+}
+
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a sentence: us udsu gus
+Enter a word to count: us
+The word 'us' occurs 1 times in the sentence. 
+                </pre>
+
+                <!-- Question 24 -->
+                <h2 id="st24">Question 24: Replace word with another word</h2>
+                <pre>Enter a sentence from the user and then enter a word and replace that word with another word.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+char sentence[500], word[50], newWord[50];
+char result[500];
+int i = 0, j = 0, k = 0, wordLen = 0, newWordLen = 0;
+
+printf("Enter a sentence: ");
+gets(sentence);
+printf("Enter the word to replace: ");
+gets(word);
+printf("Enter the new word: ");
+gets(newWord);
+
+while (word[wordLen] != '\0') 
+{
+    wordLen++;
+}
+
+while (newWord[newWordLen] != '\0') 
+{
+    newWordLen++;
+}
+
+while (sentence[i] != '\0') 
+{
+    if (sentence[i] == word[0]) 
+    {
+        int match = 1;
+        for (j = 0; j &lt; wordLen; j++) 
+        {
+            if (sentence[i + j] != word[j]) 
+            {
+                match = 0;
+                break;
+            }
+        }
+        if (match && (sentence[i + wordLen] == ' ' || sentence[i + wordLen] == '\0')) 
+        {
+            for (k = 0; k &lt; newWordLen; k++) 
+            {
+                result[j++] = newWord[k];
+            }
+            i += wordLen;
+            continue;
+        }
+    }
+    result[j++] = sentence[i++];
+}
+result[j] = '\0';
+
+printf("Modified sentence: %s\n", result);
+
+return 0;
+}
+    
+</pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a sentence: hlo  guys
+Enter the word to replace: guys
+Enter the new word: student
+Modified sentence: hlo student  
+                </pre>
+
+                <!-- Question 25 -->
+                <h2 id="st25">Question 25: Trim the spaces from both ends of string</h2>
+                <pre>Enter a string from the user and trim the spaces from both ends (if any).</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[100];
+    int count = 0, length = 0;
+
+    printf("Enter your string: ");
+    gets(str);
+
+    while (str[length] != '\0') 
+    {
+        length++;
+    }
+
+    for (int i = 0; i &lt; length; i++) 
+    {
+        if (i &lt; length - 1) 
+        {
+            if (str[i] != ' ' || (i &gt; 0 && str[i - 1] != ' ')) 
+            {
+                str[count++] = str[i];
+            }
+        } 
+        else 
+        {
+            str[count++] = str[i];
+        }
+    }
+
+    str[count] = '\0';
+
+    printf("%s\n", str);
+    return 0;
+}
+    
+        </pre>
+<pre class="out">
+        <h2 style="text-align: center;">OUTPUT</h2> 
+Enter your string:    adcd  
+abcd
+                </pre>
+
+                <!-- Question 26 -->
+                <h2 id="st26">Question 26: Split the first and second words and return the start index of second word</h2>
+                <pre>Enter a string from the user and split the first and second words and return the start index of the second word.</pre>
+                <pre>
+                    #include &lt;stdio.h&gt;
+
+int main() 
+{
+    char str[100];
+    int secondWordIndex = -1;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    for (int i = 0; str[i] != '\0'; i++) 
+    {
+        if (str[i] == ' ') 
+        {
+            secondWordIndex = i + 1; // Index after the space
+            break;
+        }
+    }
+
+    if (secondWordIndex != -1) 
+    {
+        printf("Start index of the second word: %d\n", secondWordIndex);
+    } 
+    else 
+    {
+        printf("There is no second word.\n");
+    }
+
+    return 0;
+}
+    
+        </pre>
+<pre class="out">
+        <h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: bca course
+Start index of the second word: 4     
+                </pre>
+
+                <!-- Question 27 -->
+                <h2 id="st27">Question 27: Text alignment of String</h2>
+                <pre>Display the string on the output screen but ask the text alignment option given by the user (1 for left, 2 for center,<br> 3 for right).</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+    
+int main() 
+{
+    char str[100];
+    int alignment;
+
+    printf("Enter a string: ");
+    gets(str);
+
+    printf("Choose text alignment (1 for left, 2 for center, 3 for right): ");
+    scanf("%d", &alignment);
+
+    int length = strlen(str);
+    int width = 50; // Width of the output area
+
+    switch (alignment) 
+    {
+        case 1: // Left alignment
+            printf("%s\n", str);
+            break;
+        case 2: // Center alignment
+            printf("%*s\n", (width + length) / 2, str);
+            break;
+        case 3: // Right alignment
+            printf("%*s\n", width, str);
+            break;
+        default:
+            printf("Invalid option.\n");
+            break;
+    }
+
+    return 0;
+}
+    
+        </pre>
+<pre class="out">
+        <h2 style="text-align: center;">OUTPUT</h2>
+Enter a string: vassy
+Choose text alignment (1 for left, 2 for center, 3 for right): 2
+                      vassy
+                </pre>
+
+                <!-- Question 28 -->
+                <h2 id="st28">Question 28: Create a dictionary with 10 words </h2>
+                <pre>Create a dictionary with 10 words and their meanings with the following operations: create, delete, search.</pre>
+                <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+    
+#define MAX_WORDS 10
+#define MAX_LENGTH 30
+    
+typedef struct {
+    char word[MAX_LENGTH];
+    char meaning[MAX_LENGTH];
+} DictionaryEntry;
+
+void create(DictionaryEntry dict[], int *size) {
+    if (*size >= MAX_WORDS) {
+        printf("Dictionary is full. Cannot add more words.\n");
+        return;
+    }
+    
+    printf("Enter word: ");
+    scanf("%s", dict[*size].word);
+    printf("Enter meaning: ");
+    scanf(" %[^\n]", dict[*size].meaning); // Read string with spaces
+    (*size)++;
+    printf("Word added successfully!\n");
+}
+
+void delete(DictionaryEntry dict[], int *size) {
+    char word[MAX_LENGTH];
+    printf("Enter word to delete: ");
+    scanf("%s", word);
+    
+    for (int i = 0; i &lt; *size; i++) {
+        if (strcmp(dict[i].word, word) == 0) {
+            for (int j = i; j &lt; *size - 1; j++) {
+                dict[j] = dict[j + 1];
+            }
+            (*size)--;
+            printf("Word deleted successfully!\n");
+            return;
+        }
+    }
+    printf("Word not found.\n");
+}
+
+void search(DictionaryEntry dict[], int size) {
+    char word[MAX_LENGTH];
+    printf("Enter word to search: ");
+    scanf("%s", word);
+    
+    for (int i = 0; i &lt; size; i++) {
+        if (strcmp(dict[i].word, word) == 0) {
+            printf("Meaning of '%s': %s\n", dict[i].word, dict[i].meaning);
+            return;
+        }
+    }
+    printf("Word not found.\n");
+}
+
+int main() 
+{
+    DictionaryEntry dict[MAX_WORDS] = {
+        {"apple", "A fruit that is typically red or green."},
+        {"banana", "A long curved fruit that is yellow when ripe."},
+        {"grape", "A small, round fruit that can be purple or green."},
+        {"orange", "A citrus fruit that is orange in color."},
+        {"kiwi", "A small brown fruit with green flesh."},
+        {"mango", "A tropical stone fruit with a sweet taste."},
+        {"peach", "A soft, round fruit with fuzzy skin."},
+        {"pear", "A sweet fruit with a rounded base and tapering top."},
+        {"plum", "A smooth-skinned fruit that can be purple or red."},
+        {"pineapple", "A tropical fruit with a spiky exterior."}
+    };
+
+    int size = MAX_WORDS;
+    int choice;
+
+    do {
+        printf("\nDictionary Menu:\n");
+        printf("1. Create\n");
+        printf("2. Delete\n");
+        printf("3. Search\n");
+        printf("4. Exit\n");
+        printf("Choose an option: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                create(dict, &size);
+                break;
+            case 2:
+                delete(dict, &size);
+                break;
+            case 3:
+                search(dict, size);
+                break;
+            case 4:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid option. Please try again.\n");
+        }
+    } while (choice != 4);
+
+    return 0;
+}
+
+
+        </pre>
+<pre class="out">
+        <h2 style="text-align: center;">OUTPUT</h2>
+Dictionary Menu:
+1. Create
+2. Delete
+3. Search
+4. Exit
+Choose an option: 3
+Enter word to search: apple
+Meaning of 'apple': A fruit that is typically red or green.
+
+Dictionary Menu:
+1. Create
+2. Delete
+3. Search
+4. Exit
+Choose an option: 2
+Enter word to delete: banana
+Word deleted successfully!
+
+Dictionary Menu:
+1. Create
+2. Delete
+3. Search
+4. Exit
+Choose an option: 1
+Enter word: mango
+Enter meaning: A sweet tropical fruit.
+Word added successfully!
+
+Dictionary Menu:
+1. Create
+2. Delete
+3. Search
+4. Exit
+Choose an option: 4
+Exiting...
+                </pre>
+
+                <!-- Question 29 -->
+                <h2 id="st29">Question 29: Convert the characters into their ASCII values in an integer array </h2>
+                <pre>Enter a string from the user and convert the characters into their ASCII values in an integer array (for example,<br> take 10 characters).</pre>
+                <pre>
+                    #include &lt;stdio.h&gt;
+
+int main() 
+{
+    char inputString[11]; 
+    int asciiValues[10];
+
+    printf("Enter a string (up to 10 characters): ");
+    gets(inputString);
+
+    for (int i = 0; i &lt; 10 && inputString[i] != '\0'; i++) 
+    {
+        asciiValues[i] = (int)inputString[i];
+    }
+
+    printf("ASCII values of the characters in the string:\n");
+    for (int i = 0; i &lt; 10 && asciiValues[i] != 0; i++) 
+    {
+        printf("%c: %d\n", inputString[i], asciiValues[i]);
+    }
+
+    return 0;
+}
+                
+ </pre>
+<pre class="out">
+<h2 style="text-align: center;">OUTPUT</h2>
+Enter a string (up to 10 characters): Hello
+ASCII values of the characters in the string:
+H: 72
+e: 101
+l: 108
+l: 108
+o: 111
+                </pre>
+
+                <!-- Back to Top Button -->
+                <button class="back-to-top">Back to Top</button>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Show the back-to-top button when user scrolls down
+        window.onscroll = function () {
+            var backToTopBtn = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        };
+        // Scroll back to top when button is clicked
+        document.querySelector('.back-to-top').onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>

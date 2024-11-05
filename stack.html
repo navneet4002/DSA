@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Operations</title>
+    <style>
+        /* General reset */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1e;
+    color: #d1d1d6;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.box-main {
+    max-width: 800px;
+    width: 100%;
+    background-color: #2c2c2e;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 2px solid #3f3f42;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.firsthalf2 ul {
+    list-style: none;
+    padding:0;
+}
+
+.firsthalf2 li {
+    margin:10px 0;
+}
+
+.firsthalf2 a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.firsthalf2 a:hover {
+    color: #6a6aff;
+}
+
+h2 {
+    color: white;
+    margin-top: 20px;
+    border-bottom: 2px solid #3f3f42;
+    padding-bottom: 5px;
+    font-size: 26px;
+}
+
+.vasu {
+    color: #d1d1d6;
+    max-width: 1000px;
+    font-size: large;
+    width: auto;
+    background-color: #2c2c2e;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.vasu pre {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+    overflow-x: auto;
+    background-color: #3a3a3c;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    border: 1px solid #5a5a5f;
+    color: #f4f4f5;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    background-color: #6a6aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #4f4fcc;
+}
+
+@media (max-width: 600px) {
+    .box-main {
+        padding: 20px;
+    }
+
+    .firsthalf2 a {
+        font-size: 16px;
+    }
+
+    .back-to-top {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content -->
+        <section class="main-content">
+            <div class="box-main">
+                <h1>STACK OPERATION</h1>
+                <div class="firsthalf2">
+                    <ul>
+                        <li><a href="#sk1">1. Create a stack implementing the operations on an integer array (push, pop, peek, isEmpty, isFull).</a></li>
+                        <li><a href="#sk2">2. Create a stack implementing the operations on the characters array (push, pop, peek, isEmpty, isFull).</a></li>
+                        <li><a href="#sk3">3. Create a stack implementing the operations on integer nodes (dynamically) (push, pop, peek, isEmpty, isFull).</a></li>
+                        <li><a href="#sk4">4. Create a stack implementing the operations on the character nodes (dynamically) (push, pop, peek, isEmpty, isFull).</a></li>
+                        <li><a href="#sk5">5. Enter a string from the user and reverse the string using stacks.</a></li>
+                        <li><a href="#sk6">6. Create a program to match a single bracket using stacks.</a></li>
+                        <li><a href="#sk7">7. Create two integer stacks in a single array.</a></li>
+                        <li><a href="#sk8">8. Sort the stack in ascending order using an integer array.</a></li>
+                        <li><a href="#sk9">9. Enter an infix expression from the user and convert it into a prefix expression.</a></li>
+                        <li><a href="#sk10">10. Enter an infix expression from the user and convert it into a postfix expression.</a></li>
+                        <li><a href="#sk11">11. Create a program to evaluate the prefix expression.</a></li>
+                        <li><a href="#sk12">12. Create a program to evaluate the postfix expression.</a></li>
+                    </ul>
+                </div>
+                
+ <!-- Question 1 -->
+<h2 id="sk1">Question 1: Stack Operations on Integer Array</h2>
+ <pre>
+    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;    
+    void push(int stack[],int size,int *i,int value)
+    {
+        if(*i==size)
+        {
+            return;
+        }
+        else
+        {
+            (*i)++;
+            stack[*i]=value;
+        }
+    }
+        
+        void pop(int stack[],int size,int *i)
+        {
+            if(*i==-1)
+            {
+                return;
+            }
+            else
+            {
+                stack[*i]=0;
+                (*i)--;
+            }
+        }
+        
+        int peek(int stack[],int size,int *i)
+        {
+            if(*i==-1)
+            {
+                return;
+            }
+            else
+            {
+                return stack[*i];
+            }
+        }
+        
+        void main()
+        {
+            int stack[5];
+            int i=-1,value;
+            int choice;
+            
+            while(1)
+            {
+                printf("\nEnter 1 for push()");
+                printf("\nEnter 2 for pop()");
+                printf("\nEnter 3 for peek()");
+                printf("\nEnter 4 for exit");
+                printf("\nEnter your choice from above options ");
+                scanf("%d",&choice);
+                
+                if(choice==1)
+                {
+                    printf("\nEnter the value to be pushed in the stack: ");
+                    scanf("%d",&value);
+                    push(stack,5,&i,value);
+                    if(i==5)
+                    {
+                        printf("\nThe stack is full!!");
+                    }
+                    else
+                    {
+                           printf("\nThe value %d is successfully pushed in the Stack at stack[%d]",value,i);
+                       }
+                }
+                else if(choice==2)
+                {
+                    if(i==-1)
+                    {
+                        printf("\nThe stack is empty!!");
+                    }
+                    else
+                    {
+                        printf("\nThe value %d is successfully poped from the stack at index %d .",stack[i],i);
+                        pop(stack,5,&i);
+                    }
+                }
+                else if(choice==3)
+                {
+                    int top=peek(stack,5,&i);
+                    if(i==-1)
+                    {
+                        printf("\nThe stack is empty!!");
+                    }
+                    else
+                    {
+                        printf("\nThe peek value in the stack is %d at index %d",top,i);
+                    }
+                
+                }
+                else if(choice==4)
+                {
+                    exit(0);
+                }
+                else
+                {
+                    printf("Invalid choice !!!! Enter another choice...");	
+                }
+        }
+    }
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be pushed in the stack: 2
+    
+    The value 2 is successfully pushed in the Stack at stack[0]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be pushed in the stack: 4
+    
+    The value 4 is successfully pushed in the Stack at stack[1]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be pushed in the stack: 5
+    
+    The value 5 is successfully pushed in the Stack at stack[2]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be pushed in the stack: 7
+    
+    The value 7 is successfully pushed in the Stack at stack[3]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be pushed in the stack: 6
+    
+    The value 6 is successfully pushed in the Stack at stack[4]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be pushed in the stack: 8
+    
+    The stack is full!!
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 3
+    
+    The peek value in the stack is 8 at index 5
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The value 8 is successfully poped from the stack at index 5 .
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The value 6 is successfully poped from the stack at index 4 .
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The value 7 is successfully poped from the stack at index 3 .
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The value 5 is successfully poped from the stack at index 2 .
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The value 4 is successfully poped from the stack at index 1 .
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The value 2 is successfully poped from the stack at index 0 .
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 2
+    
+    The stack is empty!!
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options 4
+    
+    --------------------------------
+    Process exited after 60.58 seconds with return value 0
+    Press any key to continue . . .
+    </pre>
+
+<!-- Question 2 -->
+<h2 id="sk2">Question 2: Stack Operations on Characters Array</h2>
+ <pre>
+    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;
+        
+        void push(char stack[], int size, int *i, char value) 
+        {
+            if (*i == size - 1) 
+            {
+                printf("\nThe stack is full!!");
+                return;
+            } 
+            else 
+            {
+                (*i)++;
+                stack[*i] = value;
+            }
+        }
+        
+        void pop(char stack[], int size, int *i)
+        {
+            if (*i == -1) 
+            {
+                printf("\nThe stack is empty!!");
+                return;
+            }
+            else 
+            {
+                stack[*i] = '\0';
+                (*i)--;
+            }
+        }
+        
+        char peek(char stack[], int size, int *i) 
+        {
+            if (*i == -1) 
+            {
+                return '\0';  
+            }
+            else 
+            {
+                return stack[*i];
+            }
+        }
+        
+        int main() 
+        {
+            char stack[5];
+            int i = -1;
+            char value;
+            int choice;
+        
+            while (1) 
+            {
+                printf("\nEnter 1 for push()");
+                printf("\nEnter 2 for pop()");
+                printf("\nEnter 3 for peek()");
+                printf("\nEnter 4 for exit");
+                printf("\nEnter your choice from above options: ");
+                scanf("%d", &choice);
+        
+                if (choice == 1) 
+                {
+                    printf("\nEnter the Character to be pushed in the stack: ");
+                    scanf(" %c", &value);  
+                    push(stack, 5, &i, value);
+                    if (i != -1)
+                    {
+                        printf("\nThe character %c is successfully pushed in the Stack at stack[%d]", value, i);
+                    }
+                } 
+                else if (choice == 2) 
+                {
+                    if (i == -1) 
+                    {
+                        printf("\nThe stack is empty!!");
+                    } 
+                    else 
+                    {
+                        printf("\nThe character %c is successfully popped from the stack at index %d.", stack[i], i);
+                        pop(stack, 5, &i);
+                    }
+                } 
+                else if (choice == 3)
+                {
+                    char top = peek(stack, 5, &i);
+                    if (top == '\0') 
+                    {
+                        printf("\nThe stack is empty!!");
+                    }
+                    else 
+                    {
+                        printf("\nThe peek character in the stack is %c at index %d", top, i);
+                    }
+                }
+                else if (choice == 4) 
+                {
+                    exit(0);
+                } 
+                else 
+                {
+                    printf("Invalid choice! Enter another choice...");
+                }
+            }
+            return 0;
+        }
+
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 1
+    
+    Enter the Character to be pushed in the stack: a
+    
+    The character a is successfully pushed in the Stack at stack[0]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 1
+    
+    Enter the Character to be pushed in the stack: n
+    
+    The character n is successfully pushed in the Stack at stack[1]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 1
+    
+    Enter the Character to be pushed in the stack: s
+    
+    The character s is successfully pushed in the Stack at stack[2]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 1
+    
+    Enter the Character to be pushed in the stack: h
+    
+    The character h is successfully pushed in the Stack at stack[3]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 1
+    
+    Enter the Character to be pushed in the stack: r
+    
+    The character r is successfully pushed in the Stack at stack[4]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 1
+    
+    Enter the Character to be pushed in the stack: s
+    
+    The stack is full!!
+    The character s is successfully pushed in the Stack at stack[4]
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 3
+    
+    The peek character in the stack is r at index 4
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 2
+    
+    The character r is successfully popped from the stack at index 4.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 2
+    
+    The character h is successfully popped from the stack at index 3.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 2
+    
+    The character s is successfully popped from the stack at index 2.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 2
+    
+    The character n is successfully popped from the stack at index 1.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 2
+    
+    The character a is successfully popped from the stack at index 0.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 2
+    
+    The stack is empty!!
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for exit
+    Enter your choice from above options: 4
+    
+    --------------------------------
+    Process exited after 113.4 seconds with return value 0
+    Press any key to continue . . .</pre>
+
+     <!-- Question 3 -->
+    <h2 id="sk3">Question 3: Stack Operations on Integer Nodes (Dynamically)</h2>
+    <pre>
+    #include&lt;stdio.h&gt;
+    #include&lt;stdlib.h&gt;
+            
+            struct stack{
+                int data;
+                struct stack *next;
+            };
+            
+            struct stack *start=NULL,*temp,*last;
+            
+            /// push function to insert the value in stack ///
+            
+            void push()
+            {
+                int value;
+                if(start==NULL)
+                {
+                    start=(struct stack*)malloc(sizeof(struct stack));
+                    printf("\nEnter the value to be inserted : ");
+                    scanf("%d",&value);
+                    start->data=value;
+                    start->next=NULL;
+                    last=start;
+                }
+                else
+                {
+                    temp=(struct stack*)malloc(sizeof(struct stack));
+                    if(temp!=NULL)
+                    {
+                        printf("\nEnter the value : ");
+                        scanf("%d",&(temp->data));
+                        temp->next=last;
+                        last=temp;
+                    }
+                    else
+                    {
+                        printf("\nMemory is Full!!");
+                    }
+                
+                }
+            }
+            
+            /// pop function to delete the value form stack ///
+            
+            void pop()
+            {
+                if(last==NULL)
+                {
+                    printf("\nStack is empty");
+                }
+                else
+                {
+                    printf("\n%d",last->data);
+                    temp=last;
+                    last=last->next;
+                    free(temp);
+                }
+                if(last==NULL)
+                {
+                    start=NULL;
+                }
+            }
+            
+            /// peek function to print the top value(last value) of the stack ///
+            
+            void peek()
+            {
+                if(last==NULL)
+                {
+                    printf("\nStack is Empty!!");
+                }
+                else
+                {
+                    printf("\n%d",last->data);
+                }
+            }
+            
+            /// traverse function to print all the values of the stack ///
+            
+            void traverse()
+            {
+                if(last==NULL)
+                {
+                    printf("\nStack is Empty");
+                }
+                else
+                {
+                    temp=last;
+                    while (temp!= NULL)
+                    {
+                        printf("\n%d",temp->data);
+                        temp=temp->next;
+                    }
+                }
+            }
+            
+            /// main Function ///
+            
+            void main()
+            {
+            
+                int choice;
+                
+                while(1)
+                {
+                    printf("\nEnter 1 for push()");
+                    printf("\nEnter 2 for pop()");
+                    printf("\nEnter 3 for peek()");
+                    printf("\nEnter 4 for traverse()");
+                    printf("\nEnter 5 for exit");
+                    printf("\nEnter your choice from above options ");
+                    scanf("%d",&choice);
+                    
+                    if(choice==1)
+                    {
+                        push();
+                        
+                           printf("\nThe value is successfully pushed in the Stack");
+            
+                    }
+                    else if(choice==2)
+                    {
+                        pop();
+                        printf("\nThe value is successfully poped from the stack.");
+                        
+                    }
+                    
+                    else if(choice==3)
+                    {
+                        peek();
+                    }
+                    
+                    else if(choice==4)
+                    {
+                        traverse();
+                    }
+                    else if(choice==5)
+                    {
+                        exit(0);
+                    }
+                    else
+                    {
+                        printf("Invalid choice !!!! Enter another choice...");	
+                    }		
+                }	
+         }    
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 1
+    
+    Enter the value to be inserted : 1
+    
+    The value is successfully pushed in the Stack
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 1
+    
+    Enter the value : 2
+    
+    The value is successfully pushed in the Stack
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 1
+    
+    Enter the value : 4
+    
+    The value is successfully pushed in the Stack
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 3
+    
+    4
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 4
+    
+    4
+    2
+    1
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 2
+    
+    4
+    The value is successfully poped from the stack.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 2
+    
+    2
+    The value is successfully poped from the stack.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 2
+    
+    1
+    The value is successfully poped from the stack.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 2
+    
+    Stack is empty
+    The value is successfully poped from the stack.
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options 5
+    
+    --------------------------------
+    Process exited after 55.15 seconds with return value 0
+    Press any key to continue .
+    </pre>      
+    <!-- Question 4 -->
+    <h2 id="sk4">Question 4: Stack Operations on Character Nodes (Dynamically)</h2>
+    <pre>
+    #include&lt;stdio.h&gt;
+    #include&lt;stdlib.h&gt;
+            
+            struct stack
+            {
+                char data;
+                struct stack *next;
+            };
+            
+            struct stack *start = NULL, *temp, *last;
+            
+            /// push function to insert the value in stack ///
+            void push() 
+            {
+                char value;
+                temp = (struct stack*)malloc(sizeof(struct stack));
+                if (temp != NULL)
+                {
+                    printf("\nEnter the value to be inserted: ");
+                    scanf(" %c", &value); 
+                    temp->data = value;
+                    temp->next = last;
+                    last = temp;
+            
+                    if (start == NULL) 
+                    { 
+                        start = last;
+                    }
+                    printf("\nThe value %c is successfully pushed in the Stack", value);
+                } 
+                else 
+                {
+                    printf("\nMemory is Full!!");
+                }
+            }
+            
+            /// pop function to delete the value from stack ///
+            void pop() 
+            {
+                if (last == NULL) 
+                {
+                    printf("\nStack is empty");
+                } 
+                else 
+                {
+                    printf("\nThe value %c is successfully popped from the stack.", last->data);
+                    temp = last;
+                    last = last->next;
+                    free(temp);
+                    
+                    if (last == NULL)
+                    {
+                        start = NULL;
+                    }
+                }
+            }
+            
+            /// peek function to print the top value (last value) of the stack ///
+            void peek()
+            {
+                if (last == NULL)
+                {
+                    printf("\nStack is Empty!!");
+                } 
+                else 
+                {
+                    printf("\nTop value of the stack: %c", last->data);
+                }
+            }
+            
+            /// traverse function to print all the values of the stack ///
+            void traverse()
+            {
+                if (last == NULL) 
+                {
+                    printf("\nStack is Empty");
+                } 
+                else 
+                {
+                    temp = last;
+                    printf("\nStack elements are:");
+                    while (temp != NULL) 
+                    {
+                        printf("\n%c", temp->data);
+                        temp = temp->next;
+                    }
+                }
+            }
+            
+            /// main function ///
+            int main() 
+            {
+                int choice;
+                
+                while (1) 
+                {
+                    printf("\n\nEnter 1 for push()");
+                    printf("\nEnter 2 for pop()");
+                    printf("\nEnter 3 for peek()");
+                    printf("\nEnter 4 for traverse()");
+                    printf("\nEnter 5 for exit");
+                    printf("\nEnter your choice from above options: ");
+                    scanf("%d", &choice);
+                    
+                    switch (choice) 
+                    {
+                        case 1:
+                            push();
+                            break;
+                        case 2:
+                            pop();
+                            break;
+                        case 3:
+                            peek();
+                            break;
+                        case 4:
+                            traverse();
+                            break;
+                        case 5:
+                            exit(0);
+                        default:
+                            printf("Invalid choice! Enter another choice...");
+                    }
+                }
+                return 0;
+            }
+            
+        
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 1
+    
+    Enter the value to be inserted: a
+    
+    The value a is successfully pushed in the Stack
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 1
+    
+    Enter the value to be inserted: n
+    
+    The value n is successfully pushed in the Stack
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 1
+    
+    Enter the value to be inserted: v
+    
+    The value v is successfully pushed in the Stack
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 4
+    
+    Stack elements are:
+    v
+    n
+    a
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 3
+    
+    Top value of the stack: v
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 2
+    
+    The value v is successfully popped from the stack.
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 2
+    
+    The value n is successfully popped from the stack.
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 2
+    
+    The value a is successfully popped from the stack.
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 2
+    
+    Stack is empty
+    
+    Enter 1 for push()
+    Enter 2 for pop()
+    Enter 3 for peek()
+    Enter 4 for traverse()
+    Enter 5 for exit
+    Enter your choice from above options: 5
+    
+    --------------------------------
+    Process exited after 54.24 seconds with return value 0
+    Press any key to continue . . .
+    </pre>
+    <!-- Question 5 -->
+    <h2 id="sk5">Question 5: Reverse String Using Stacks</h2>
+    <pre>
+    #include&lt;stdio.h&gt;
+    #include&lt;string.h&gt;
+        
+        
+        void stringreverse(char stack[],int size,char str[],int len,int *i,int *j)
+        {
+            for(*j=0;*j&lt;=len-1;(*j)++)
+            {
+                    (*i)++;
+                    stack[*i]=str[*j];
+                    //printf("The stack.....");
+                    //printf("%c",stack[*i]);
+            }
+            printf("\nThe string in reverse order : ");
+            for(*j=0;*j&lt;=len-1;(*j)++)
+            {
+                    printf("%c",stack[*i]);
+                    stack[*i]==0;
+                    (*i)--;
+            }
+            
+        }
+            
+        
+        int stringlen(char str[],int len,int *k)
+        {
+            for(*k=0;str[*k]!='\0';(*k)++)
+            {
+                len++;
+            }
+            return len;
+        }
+        
+        int main()
+        {
+            char stack[20];
+            int i=-1,len=0,j,k;
+            char str[20];
+            printf("Enter string to reverse : ");
+            gets(str);
+            puts(str);
+            len=stringlen(str,len,&k);
+            printf("The string length is %d\n",len);
+            stringreverse(stack,20,str,len,&i,&j);
+            return 0;
+        }
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter string to reverse : navneet kaur
+    navneet kaur
+    The string length is 12
+    
+    The string in reverse order : ruak teenvan
+    --------------------------------
+    Process exited after 4.431 seconds with return value 0
+    Press any key to continue . . .
+    </pre>
+
+    <!-- Question 6 -->
+    <h2 id="sk6">Question 6: Bracket Matching</h2>
+    <pre>
+        #include&lt;stdio.h&gt;
+        #include&lt;string.h&gt;
+            
+        void bracketmatch(char stack[],int size,char str[],int len,int *i,int *j)
+            {
+                for(*j=0;*j&lt;=len-1;(*j)++)
+                {
+                    if(str[*j]=='(')
+                    {
+                        (*i)++;
+                        stack[*i]='(';
+                        //printf("The stack....");
+                        //printf("%c",stack[*i]);
+                    }
+                    else if(str[*j]==')')
+                    {
+                        if(*i==-1)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                        stack[*i]==0;
+                        (*i)--;
+                        }
+                    }
+                    else
+                    {
+                        printf("not a bracket!!");
+                    }
+                }
+                
+            }
+            int stringlen(char str[],int len,int *k)
+            {
+                for(*k=0;str[*k]!='\0';(*k)++)
+                {
+                    len++;
+                }
+                return len;
+            }
+            
+            int main()
+            {
+                char stack[20];
+                int i=-1,len=0,j,k,count=0;
+                char str[20];
+                printf("Enter brackets ( or )\n");
+                gets(str);
+                puts(str);
+                len=stringlen(str,len,&k);
+                printf("The string length is %d\n",len);
+                bracketmatch(stack,20,str,len,&i,&j);
+                printf("The value of i is : %d\n",i);
+                printf("The remaining brackets in string.....");
+                for(j;j&lt;=len-1;j++)
+                {
+                    count++;
+                    printf("\n%c",str[j]);
+                }
+                if(count!=0)
+                {
+                    printf("\nBrackets are not matching !!!");
+                }
+                else
+                {
+                    printf("\nBrackets are matching ");
+                }
+                return 0;
+            }
+           </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter brackets ( or )
+    ((((())))))
+    ((((())))))
+    The string length is 11
+    The value of i is : -1
+    The remaining brackets in string.....
+    )
+    Brackets are not matching !!!
+    --------------------------------
+    Process exited after 5.489 seconds with return value 0
+    Press any key to continue . . .
+    </pre>
+    <!-- Question 7 -->
+    <h2 id="sk7">Question 7: Create two integer stacks</h2>
+    <pre>
+        #include &lt;stdio.h&gt;
+        #include &lt;stdlib.h&gt;
+            
+            #define MAX 100 
+            
+            int arr[MAX]; // Array to store both stacks
+            int top1 = -1; // Top pointer for Stack 1
+            int top2 = MAX; // Top pointer for Stack 2
+            
+            // Function to push an element onto Stack 1
+            void push1(int value) 
+            {
+                if (top1 &lt; top2 - 1) 
+                {
+                    top1++;
+                    arr[top1] = value;
+                    printf("Pushed %d to Stack 1\n", value);
+                } 
+                else 
+                {
+                    printf("Stack Overflow for Stack 1\n");
+                }
+            }
+            
+            // Function to push an element onto Stack 2
+            void push2(int value) 
+            {
+                if (top1 &lt; top2 - 1) 
+                {
+                    top2--;
+                    arr[top2] = value;
+                    printf("Pushed %d to Stack 2\n", value);
+                } 
+                else 
+                {
+                    printf("Stack Overflow for Stack 2\n");
+                }
+            }
+            
+            // Function to pop an element from Stack 1
+            int pop1() 
+            {
+                if (top1 >= 0) 
+                {
+                    int value = arr[top1];
+                    top1--;
+                    printf("Popped %d from Stack 1\n", value);
+                    return value;
+                } 
+                else 
+                {
+                    printf("Stack Underflow for Stack 1\n");
+                    return -1;
+                }
+            }
+            
+            // Function to pop an element from Stack 2
+            int pop2() 
+            {
+                if (top2 &lt; MAX) 
+                {
+                    int value = arr[top2];
+                    top2++;
+                    printf("Popped %d from Stack 2\n", value);
+                    return value;
+                } 
+                else 
+                {
+                    printf("Stack Underflow for Stack 2\n");
+                    return -1;
+                }
+            }
+            
+            // Function to display the contents of Stack 1
+            void displayStack1() 
+            {
+                int i;
+                if (top1 >= 0) 
+                {
+                    printf("Stack 1 elements: ");
+                    for (i = 0; i &lt;= top1; i++) 
+                    {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+                } 
+                else 
+                {
+                    printf("Stack 1 is empty\n");
+                }
+            }
+            
+            // Function to display the contents of Stack 2
+            void displayStack2() 
+            {
+                int i;
+                if (top2 &lt; MAX) 
+                {
+                    printf("Stack 2 elements: ");
+                    for ( i = top2; i &lt; MAX; i++)
+                    {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+                } 
+                else 
+                {
+                    printf("Stack 2 is empty\n");
+                }
+            }
+            
+            int main() 
+            {
+                int choice, value;
+            
+                while (1) 
+                {
+                    printf("\nMenu:\n");
+                    printf("1. Push to Stack 1\n");
+                    printf("2. Push to Stack 2\n");
+                    printf("3. Pop from Stack 1\n");
+                    printf("4. Pop from Stack 2\n");
+                    printf("5. Display Stack 1\n");
+                    printf("6. Display Stack 2\n");
+                    printf("7. Exit\n");
+                    printf("Enter your choice: ");
+                    scanf("%d", &choice);
+            
+                    switch (choice) 
+                    {
+                        case 1:
+                            printf("Enter value to push to Stack 1: ");
+                            scanf("%d", &value);
+                            push1(value);
+                            break;
+                        case 2:
+                            printf("Enter value to push to Stack 2: ");
+                            scanf("%d", &value);
+                            push2(value);
+                            break;
+                        case 3:
+                            pop1();
+                            break;
+                        case 4:
+                            pop2();
+                            break;
+                        case 5:
+                            displayStack1();
+                            break;
+                        case 6:
+                            displayStack2();
+                            break;
+                        case 7:
+                            printf("Exiting program.\n");
+                            exit(0);
+                        default:
+                            printf("Invalid choice! Please try again.\n");
+                    }
+                }
+            
+                return 0;
+            }
+            
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 1
+    Enter value to push to Stack 1: 2
+    Pushed 2 to Stack 1
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 2
+    Enter value to push to Stack 2: 3
+    Pushed 3 to Stack 2
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 1
+    Enter value to push to Stack 1: 5
+    Pushed 5 to Stack 1
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 6
+    Stack 2 elements: 3
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 5
+    Stack 1 elements: 2 5
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 1
+    Enter value to push to Stack 1: 9
+    Pushed 9 to Stack 1
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 3
+    Popped 9 from Stack 1
+    
+    Menu:
+    1. Push to Stack 1
+    2. Push to Stack 2
+    3. Pop from Stack 1
+    4. Pop from Stack 2
+    5. Display Stack 1
+    6. Display Stack 2
+    7. Exit
+    Enter your choice: 7
+    Exiting program.
+    
+    --------------------------------
+    Process exited after 164.5 seconds with return value 0
+    Press any key to continue . . .
+    </pre>
+
+    <!-- Question 8 -->
+    <h2 id="sk8">Question 8: Sort the stack in ascending order</h2>
+    <pre>
+        #include &lt;stdio.h&gt;
+        #include &lt;stdlib.h&gt;
+        
+        int top = -1;
+        
+        void push(int *stack, int size) 
+        {
+            int item;
+            if (top == size - 1) 
+            {
+                printf("!OVERFLOW");
+                return;
+            }
+        
+            printf("\nEnter the item: ");
+            scanf("%d", &item);
+        
+            top++;
+            stack[top] = item;
+            printf("The item %d inserted at index stack[%d]", item, top);    
+        }
+        
+        void pop(int *stack, int size) 
+        {
+            if (top == -1) 
+            {
+                printf("!UNDERFLOW");
+                return;    
+            }    
+            
+            printf("The item %d at stack[%d] is popped.", stack[top], top);
+            stack[top] = 0;
+            top--;
+        }
+        
+        void peek(int *stack, int size) 
+        {
+            if (top == -1) 
+            {
+                printf("UNDERFLOW!");
+                return;
+            }
+            printf("\nThe top most item is %d at index stack[%d]", stack[top], top);
+        }
+        
+        void trav(int *stack, int size)
+        {
+                int i;
+                printf("\n The elements present in stack are : ");
+                for(i = top; i &gt;= 0; i--)
+                {
+                    printf("%d ", stack[i]);
+                }
+        }	
+        
+        void sort(int *stack) 
+        {
+            for (int i = 0; i &lt;= top; i++) 
+            {
+                for (int j = 0; j &lt; top - i; j++) 
+                {
+                    if (stack[j] &lt; stack[j + 1]) 
+                    {
+                        int temp = stack[j];
+                        stack[j] = stack[j + 1];
+                        stack[j + 1] = temp;
+                    }
+                }
+            }
+            printf("Stack sorted in ascending order.\n");
+        }
+        
+        void main() 
+        {
+            int stack[5];
+            int choice;
+            while (1) 
+            {
+                printf("\n1 push():");    
+                printf("\n2 pop ():");
+                printf("\n3 peek ():");
+                printf("\n4 trav ()");
+                printf("\n5 sort ():");
+                printf("\n6 exit ():");
+                printf("\nEnter the choice : ");
+                scanf("%d", &choice);
+                switch (choice) 
+                {
+                    case 1:
+                        push(stack, 5);
+                        break;
+                    case 2:
+                        pop(stack, 5);
+                        break;
+                    case 3:
+                        peek(stack, 5);
+                        break;        
+                    case 4:
+                        trav(stack, 5);
+                        break;        
+                    case 5:
+                        sort(stack);
+                        break;
+                    case 6:
+                        exit(0); 
+                    default:
+                        printf("INVALID INPUT");
+                        break;                
+                }
+            }
+        }  
+        
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+        
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 1
+        
+        Enter the item: 58
+        The item 58 inserted at index stack[0]
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 1
+        
+        Enter the item: 2
+        The item 2 inserted at index stack[1]
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 1
+        
+        Enter the item: 45
+        The item 45 inserted at index stack[2]
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 1
+        
+        Enter the item: 3
+        The item 3 inserted at index stack[3]
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 1
+        
+        Enter the item: 56
+        The item 56 inserted at index stack[4]
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 1
+        !OVERFLOW
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 5
+        Stack sorted in ascending order.
+        
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice : 4
+        
+         The elemensts present in stack are : 2 3 45 56 58
+        1 push():
+        2 pop():
+        3 peek():
+        4 trav()
+        5 sort():
+        6 exit():
+        Enter the choice :
+        </pre>  
+
+    </pre>
+    
+     <!-- Question 9 -->
+    <h2 id="sk9">Question 9: Infix expression to prefix expression</h2>
+      <pre>
+     
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct stack 
+{
+    int max;
+    char *array;
+    int top;	
+};
+
+struct stack s1;
+char infix[1000];
+char prefix[1000];
+int prefix_index = -1;
+
+void init(int size) 
+{
+    s1.max = size;
+    s1.array = (char *) malloc(sizeof(char) * s1.max);
+    s1.top = -1;
+}
+
+void push(char item) 
+{
+    if (s1.top == s1.max - 1) 
+    {
+        printf("\nOverflow!");
+        return;
+    }
+    s1.top++;
+    s1.array[s1.top] = item;
+}
+
+char peek() 
+{
+    if (s1.top == -1) 
+    {
+        printf("\nEmpty Stack, cannot peek!");
+        return '\0';
+    }
+    return s1.array[s1.top];
+}
+
+char pop() 
+{
+    if (s1.top == -1) 
+    {
+        printf("\nUnderflow!");
+        return '\0';
+    }
+    return s1.array[s1.top--];
+}
+
+int precedence(char op) 
+{
+    if (op == '^') return 3;
+    if (op == '*' || op == '/') return 2;
+    if (op == '+' || op == '-') return 1;
+    return 0;
+}
+
+void reverse(char *exp) 
+{
+    int n = strlen(exp);
+    for (int i = 0; i &lt; n / 2; i++) 
+    {
+        char temp = exp[i];
+        exp[i] = exp[n - i - 1];
+        exp[n - i - 1] = temp;
+    }
+}
+
+void convert() 
+{
+    reverse(infix);
+    int i;
+    char top_item;
+    
+    for (i = 0; infix[i] != '\0'; i++) 
+    {
+        if (isalnum(infix[i])) 
+        {
+            prefix[++prefix_index] = infix[i];
+        } 
+        else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/' || infix[i] == '^') 
+        {
+            while (s1.top != -1 && precedence(peek()) &gt; precedence(infix[i])) 
+            {
+                top_item = pop();
+                prefix[++prefix_index] = top_item;
+            }
+            push(infix[i]);
+        } 
+        else if (infix[i] == ')') 
+        {
+            push(infix[i]);
+        } 
+        else if (infix[i] == '(') 
+        {
+            while (s1.top != -1 && peek() != ')') 
+            {
+                prefix[++prefix_index] = pop();
+            }
+            pop();
+        }
+    }
+    
+    while (s1.top != -1) 
+    {
+        prefix[++prefix_index] = pop();
+    }
+    
+    prefix[prefix_index + 1] = '\0';
+    reverse(prefix);
+}
+
+int main() 
+{
+    printf("Enter the infix expression: ");
+    gets(infix);
+
+    init(strlen(infix) + 2);
+    convert();
+
+    printf("Prefix expression: %s\n", prefix);
+    free(s1.array);
+    return 0;
+}
+
+</pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter the infix expression: (A*A(A^D(S+A))a+S*S-)
+    Prefix expression: -+*AA^AD+SAa*SS
+    </pre>
+    <!-- Question 10 -->
+    <h2 id="sk10">Question 10: Infix expression to postfix expression</h2>
+    <pre>
+        #include &lt;stdio.h&gt;
+        #include &lt;stdlib.h&gt;
+        #include &lt;string.h&gt;
+            
+        struct stack 
+        {
+            int max;
+            char *array;
+            int top;	
+        };
+        
+        struct stack s1;
+        char infix[1000];
+        char postfix[1000];
+        int postfix_index = -1;
+        
+        void init(int size) 
+        {
+            s1.max = size;
+            s1.array = (char *) malloc(sizeof(char) * s1.max);
+            s1.top = -1;
+        }
+        
+        void push(char item) 
+        {
+            if (s1.top == s1.max - 1) 
+            {
+                printf("\nOverflow!");
+                return;
+            }
+            s1.top++;
+            s1.array[s1.top] = item;
+        }
+        
+        char peek() 
+        {
+            if (s1.top == -1) 
+            {
+                printf("\nEmpty Stack, cannot peek!");
+                return '\0';
+            }
+            return s1.array[s1.top];
+        }
+        
+        char pop() 
+        {
+            if (s1.top == -1) 
+            {
+                printf("\nUnderflow!");
+                return '\0';
+            }
+            return s1.array[s1.top--];
+        }
+        
+        void checkEndBrackets() 
+        {
+            int x;
+            if (infix[0] != '(') 
+            {
+                for (int i = strlen(infix); i &gt;= 0; i--) 
+                {
+                    infix[i + 1] = infix[i];
+                }
+                infix[0] = '(';
+            }
+            if (infix[strlen(infix) - 1] != ')') 
+            { 
+                x = strlen(infix);
+                infix[x] = ')';
+                infix[x + 1] = '\0';
+            }
+        }
+        
+        void convert() 
+        {
+            int i;
+            char top_item;
+        
+            for (i = 0; infix[i] != '\0'; i++) 
+            {
+                if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/' || infix[i] == '^') 
+                {
+                    while (s1.top != -1 && (peek() == '^' || (peek() == '*' || peek() == '/') && 
+                    (infix[i] == '+' || infix[i] == '-')))
+                    {
+                        top_item = pop();
+                        postfix[++postfix_index] = top_item;
+                    }
+                    push(infix[i]);
+                } 
+                else if (infix[i] == '(') 
+                {
+                    push(infix[i]);
+                } 
+                else if (infix[i] == ')') 
+                {
+                    while (s1.top != -1 && peek() != '(') 
+                    {
+                        postfix[++postfix_index] = pop();
+                    }
+                    pop();
+                } 
+                else 
+                {
+                    postfix[++postfix_index] = infix[i];
+                }
+            }
+        
+            while (s1.top != -1) 
+            {
+                postfix[++postfix_index] = pop();
+            }
+        
+            postfix[postfix_index + 1] = '\0';
+        }
+        
+        int main() 
+        {
+            printf("Enter the infix expression: ");
+            gets(infix);
+        
+            init(strlen(infix) + 2);
+            checkEndBrackets();
+            convert();
+        
+            printf("Postfix expression: %s\n", postfix);
+            free(s1.array);
+            return 0;
+        }
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter the infix expression: (a+(v^S)s+d*s)
+    Postfix expression: avS^sds*++
+
+    </pre>
+    <!-- Question 11 -->
+    <h2 id="sk11">Question 11: Evaluate the prefix expression</h2>
+    <pre>
+        #include &lt;stdio.h&gt;
+        #include &lt;stdlib.h&gt;
+        #include &lt;string.h&gt;
+        #include &lt;math.h&gt;
+        
+        struct stack 
+        {
+            int max;
+            double *array;
+            int top;	
+        };
+        
+        struct stack s1;
+        char infix[1000];
+        char prefix[1000];
+        int prefix_index = -1;
+        
+        void init(int size) 
+        {
+            s1.max = size;
+            s1.array = (double *) malloc(sizeof(double) * s1.max);
+            s1.top = -1;
+        }
+        
+        void push(double item) 
+        {
+            if (s1.top == s1.max - 1) 
+            {
+                printf("\nOverflow!");
+                return;
+            }
+            s1.top++;
+            s1.array[s1.top] = item;
+        }
+        
+        double pop() 
+        {
+            if (s1.top == -1) 
+            {
+                printf("\nUnderflow!");
+                return 0;
+            }
+            return s1.array[s1.top--];
+        }
+        
+        int isDigit(char c) 
+        {
+            return c &gt;= '0' && c &lt;= '9';
+        }
+        
+        double evaluatePrefix() 
+        {
+            for (int i = prefix_index; i &gt;= 0; i--) 
+            {
+                if (isDigit(prefix[i])) 
+                {
+                    push(prefix[i] - '0');
+                } 
+                else 
+                {
+                    double operand1 = pop();
+                    double operand2 = pop();
+                    switch (prefix[i]) 
+                    {
+                        case '+': push(operand1 + operand2); break;
+                        case '-': push(operand1 - operand2); break;
+                        case '*': push(operand1 * operand2); break;
+                        case '/': push(operand1 / operand2); break;
+                        case '^': push(pow(operand1, operand2)); break;
+                    }
+                }
+            }
+            return pop();
+        }
+        
+        void reverse(char *exp) 
+        {
+            int n = strlen(exp);
+            for (int i = 0; i &lt; n / 2; i++) 
+            {
+                char temp = exp[i];
+                exp[i] = exp[n - i - 1];
+                exp[n - i - 1] = temp;
+            }
+        }
+        
+        int precedence(char op) 
+        {
+            if (op == '^') return 3;
+            if (op == '*' || op == '/') return 2;
+            if (op == '+' || op == '-') return 1;
+            return 0;
+        }
+        
+        void convert() 
+        {
+        reverse(infix);
+        for (int i = 0; infix[i] != '\0'; i++) 
+        {
+            if (isDigit(infix[i])) 
+            {
+                prefix[++prefix_index] = infix[i];
+            } 
+            else if (infix[i] == '+' || infix[i] == '-' || infix[i] == '*' || infix[i] == '/' || infix[i] == '^') 
+            {
+                while (s1.top != -1 && precedence(s1.array[s1.top]) &gt; precedence(infix[i])) 
+                {
+                    prefix[++prefix_index] = pop();
+                }
+                push(infix[i]);
+            } 
+            else if (infix[i] == ')') 
+            {
+                push(infix[i]);
+            } 
+            else if (infix[i] == '(') 
+            {
+                while (s1.top != -1 && s1.array[s1.top] != ')') 
+                {
+                    prefix[++prefix_index] = pop();
+                }
+                pop();
+            }
+            }
+            
+            while (s1.top != -1) 
+            {
+                prefix[++prefix_index] = pop();
+            }
+            
+            prefix[prefix_index + 1] = '\0';
+            reverse(prefix);
+        }
+        
+        int main() 
+        {
+            printf("Enter the infix expression: ");
+            gets(infix);
+        
+            init(strlen(infix) + 2);
+            convert();
+            
+            printf("Prefix expression: %s\n", prefix);
+            double result = evaluatePrefix();
+            printf("Evaluation result: %.2f\n", result);
+            
+            free(s1.array);
+            return 0;
+        }
+        
+    </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    Enter the infix expression: ^42
+    Prefix expression: ^42
+    Evaluation result: 16.00
+        </pre>
+    <!-- Question 12 -->
+    <h2 id="sk12">Question 12: Evaluate the postfix expression</h2>
+    <pre>
+        #include &lt;stdio.h&gt;
+        #include &lt;math.h&gt;
+        #define size_INT16_MAX_ 100
+        
+        void push(int *stack, int *top, int val) 
+        {
+            stack[++(*top)] = val;
+        }
+        
+        int pop(int *stack, int *top) 
+        {
+            return stack[(*top)--];
+        }
+        
+        int peek(int *stack, int *top) 
+        {
+            return stack[*top];
+        }
+        
+        int main() 
+        {
+            int size = size_INT16_MAX_;
+            int top = -1;
+            char exp[size];
+            int stack[size];
+            int result;
+            char curr;
+            int ind = 0;
+            int opr1, opr2;
+            int i;
+            
+            printf("ENTER A POSTFIX EXPRESSION : ");
+            gets(exp);
+            
+            for (i = 0; exp[i] != 0; i++) 
+            {
+                if ((exp[i] == '^') || (exp[i] == '*') || (exp[i] == '/') || (exp[i] == '+') || (exp[i] == '-')) 
+                {
+                    opr2 = (int)(pop(stack, &top)); 
+                    opr1 = (int)(pop(stack, &top)); 
+                    if (exp[i] == '^') 
+                    {
+                        push(stack, &top, pow(opr1, opr2));
+                    }
+                    if (exp[i] == '*') 
+                    {
+                        push(stack, &top, opr1 * opr2);
+                    }
+                    if (exp[i] == '/') 
+                    {
+                        push(stack, &top, opr1 / opr2);
+                    }
+                    if (exp[i] == '+') 
+                    {
+                        push(stack, &top, opr1 + opr2);
+                    }
+                    if (exp[i] == '-') 
+                    {
+                        push(stack, &top, opr1 - opr2);
+                    }
+                } 
+                else if ((exp[i] &gt; 47) && (exp[i] &lt; 58)) 
+                {
+                    push(stack, &top, exp[i] - 48);
+                }
+            }
+            
+            result = pop(stack, &top);
+            printf("RESULT : %d", result);
+            return 0;
+        }
+        
+        </pre>
+    <pre class="ans">
+    <h2 style="text-align: center;">OUTPUT</h2>
+    ENTER A POSTFIX EXPRESSION : 63+3/
+    RESULT : 3
+    </pre>
+                 <!-- Back to Top Button -->
+                <button class="back-to-top">Back to Top</button>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Show the back-to-top button when user scrolls down
+        window.onscroll = function () {
+            var backToTopBtn = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        };
+        // Scroll back to top when button is clicked
+        document.querySelector('.back-to-top').onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>
